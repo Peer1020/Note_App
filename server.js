@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path=require('path');
 
 // create express app
 const app = express();
@@ -26,10 +27,16 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-// define a simple route
-app.get('/', (req, res) => {
-    res.json({"message": "Welcome to Note Application. Take notes quickly. Organize and keep track of all your notes."});
-});
+// define a simple route in JSON for testing
+//app.get('/', (req, res) => {
+//    res.json({"message": "Welcome to Note Application. Take notes quickly. Organize and keep track of all your notes."});
+//});
+
+// define view to html
+app.get('/',function (req,res){
+    res.sendFile(path.join(__dirname+'/views/index.html'));
+})
+
 
 // Require Notes routes
 require('./app/routes/note.routes.js')(app);
