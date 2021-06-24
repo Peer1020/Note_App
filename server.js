@@ -33,9 +33,17 @@ mongoose.connect(dbConfig.url, {
 //});
 
 // define view to html
-app.get('/',function (req,res){
-    res.sendFile(path.join(__dirname+'/views/index.html'));
-})
+//app.get('/',function (req,res){
+//    res.sendFile(path.join(__dirname+'/views/index.html'));
+//})
+
+// set view engine
+
+//app.set('view engine', "raz");
+
+// retrieve main file
+
+app.use(express.static("views"));
 
 
 // Require Notes routes
