@@ -21,21 +21,23 @@
         <header>
             <h2>Note</h2>
         </header>
-            <p><input type="text" for="title" name="title" value="" /></p>
-            <p><input type="text" for="content" name="content" value="" /></p>
+            <p><input type="text" id="title" name="title" value="" /></p>
+            <p><input type="text" id="content" name="content" value="" /></p>
         <a> <button id="encode">Submit</button></a>
     </article>
 
     <script>
-    document.getElementById("encode").addEventListener('click',myFunction);
+    document.getElementById("encode").addEventListener('click',postFunction);
 
-            function myFunction() {
-        let response = fetch('http://localhost:3000/notes', {
+            function postFunction() {
+        var foo=document.getElementById("title").value;
+        var get=document.getElementById("content").value;
+                let response = fetch('http://localhost:3000/notes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-        body: JSON.stringify({title: "title", content: "content"})
+        body: JSON.stringify({title: foo, content: get})
 
         }).then(response=>{
             console.log(response)
