@@ -1,26 +1,19 @@
-const notes = require('../controllers/note.controllers.js');
+document.getElementById("encode").addEventListener('click',postFunction);
 
-app.post('/notes', notes.create);
+function postFunction() {
+    var title_temp=document.getElementById("title").value;
+    var content_temp=document.getElementById("content").value;
+    var importance_temp=document.getElementById("importance").value;
+    var due_temp=document.getElementById("due").value;
+    let response = fetch('http://localhost:3000/notes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({title: title_temp, content: content_temp,importance: importance_temp,due: due_temp})
 
+    }).then(response=>{
+        console.log(response)
+    })
+}
 
-
-
-
-
-
-button.addEventListener('click', async _ => {
-    try {
-        function addComment() {
-            var xhttp = new XMLHttpRequest();
-            var commentJson = '{"body" : "adding comment to the task from client side javascript code"}';
-
-            xhttp.onreadystatechange = function () {
-                if (xhttp.readyState == 4) {
-                    document.getElementById("demo").innerHTML = xhttp.responseText;
-                }
-            };
-
-            xhttp.open("POST", "URL", true);
-            xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send(commentJson);
-        }}})

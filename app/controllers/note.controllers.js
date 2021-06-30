@@ -11,7 +11,9 @@ exports.create = (req, res) => {
     // Create a Note
     const note = new Note({
         title: req.body.title || "Untitled Note",
-        content: req.body.content
+        content: req.body.content,
+        importance: req.body.importance,
+        due: req.body.due
     });
 
     // Save Note in the database
