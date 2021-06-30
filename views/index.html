@@ -16,16 +16,30 @@
     <h1>Noteful</h1>
 </header>
 <main>
-
     <article>
         <header>
             <h2>Note</h2>
         </header>
-            <p><input type="text" id="title" name="title" value="" /></p>
-            <p><input type="text" id="content" name="content" value="" /></p>
-            <p><input type="text" id="importance" name="importance" value="" /></p>
-            <p><input type="text" id="due" name="due" value="" /></p>
-        <a> <button id="encode">Submit</button></a>
+        <p><input type="text" id="title" name="title" value=""/></p>
+        <p><input type="text" id="content" name="content" value=""/></p>
+        <!-- <p><input type="text" id="importance" name="importance" value="" /></p> -->
+
+        <select name="importance" id="importance">
+            <option value="" selected="selected">--Select importance--</option>
+            <option value="Blocker" selected="selected">Blocker</option>
+            <option value="Critical" selected="selected">Critical</option>
+            <option value="Major" selected="selected">Major</option>
+            <option value="Minor" selected="selected">Minor</option>
+            <option value="Trivial" selected="selected">Trivial</option>
+        </select>
+
+
+        <p><input type="text" id="due" name="due" value=""/></p>
+
+
+        <a>
+            <button id="encode">Submit</button>
+        </a>
     </article>
 
     <script src="scripts/script.js"></script>
