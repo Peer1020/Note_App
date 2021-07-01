@@ -18,16 +18,18 @@ function postFunction() {
 }
 
 
-var importance_options = ["Blocker", "Critical", "Major", "Minor", "Trivial"];
-
-document.getElementById("importance").addEventListener("", dropdownFunction);
-
-function dropdownFunction() {
-    var urgency=document.getElementById("importance");
-    for (var x in importance_options) {
-        urgency[urgency.options.length] = new Option(x, x);
+function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
     }
-
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
 }
 
 

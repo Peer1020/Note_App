@@ -153,42 +153,6 @@ section {
     padding: 20px;
 }
 
-.signup-login {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    margin: 0 auto;
-    padding: 20px;
-    resize: both;
-    overflow: auto;
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #FFFFFF;
-    z-index: 2;
-}
-
-
-.signup-login fieldset {
-    display: inline-block;
-}
-
-.signup-login input,
-.signup-login button {
-    margin: 0.3em;
-}
-
-.signup-login label {
-    width: 5em;
-    display: inline-block;
-}
-
 /***** STYLE *****/
 
 body>header,
@@ -226,24 +190,6 @@ nav .metadata {
 
 body>main {
     border: 0.1px solid #929fad;
-}
-
-#note-edit-form input,
-#note-edit-form textarea,
-#note-edit-form select,
-#note-edit-form button {
-    margin: 0.5em;
-}
-
-#note-edit-form input,
-#note-edit-form textarea,
-#note-edit-form select {
-    padding: 0.5em;
-}
-
-#note-edit-form select,
-#note-edit-form button {
-    width: fit-content;
 }
 
 .removeBtn {
@@ -294,19 +240,6 @@ select {
     display: inline-block;
 }
 
-.error-message {
-    color:red;
-    display:none;
-}
-.success-message {
-    color:limegreen;
-    display:none;
-}
-
-.signup-login {
-    background-color: #353d44;
-}
-
 .dropbtn {
     background-color: #3498DB;
     color: white;
@@ -345,4 +278,31 @@ select {
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+
+/* Style tab links */
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 20%;
+}
+
 
