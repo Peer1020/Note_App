@@ -12,36 +12,57 @@
 </head>
 
 <body>
-<header>
-    <h1>Noteful</h1>
-</header>
-<main>
 
-    <button class="tablink" onclick="openPage('Create_Note')">Create Note</button>
-    <button class="tablink" onclick="openPage('By_finish_Date')" id="defaultOpen">By finish date</button>
-    <button class="tablink" onclick="openPage('By_created_Date')">By created Date</button>
-    <button class="tablink" onclick="openPage('By_importance')">By importance</button>
+<div class="tabs">
 
-    <div id='Create_Note' class="tabcontent">
-        <p><input type="text" id="title" name="title" value=""/></p>
-        <p><input type="text" id="content" name="content" value=""/></p>
-        <select name="importance" id="importance">
-            <option value="" selected="selected">--Select importance--</option>
-            <option value="Blocker" selected="selected">Blocker</option>
-            <option value="Critical" selected="selected">Critical</option>
-            <option value="Major" selected="selected">Major</option>
-            <option value="Minor" selected="selected">Minor</option>
-            <option value="Trivial" selected="selected">Trivial</option>
-        </select>
-        <p><input type="text" id="due" name="due" value=""/></p>
-        <a>
-            <button id="encode">Submit</button>
-        </a>
+    <input type="radio" name="tabs" id="tabone" checked="checked">
+    <label for="tabone">First Tab</label>
+    <div class="tab">
+        <h1>Create Note</h1>
+        <div id='Create_Note' class="tabcontent">
+            <p><input type="text" id="title" name="title" value=""/></p>
+            <p><input type="text" id="content" name="content" value=""/></p>
+            <select name="importance" id="importance">
+                <option value="" selected="selected">--Select importance--</option>
+                <option value="Blocker" selected="selected">Blocker</option>
+                <option value="Critical" selected="selected">Critical</option>
+                <option value="Major" selected="selected">Major</option>
+                <option value="Minor" selected="selected">Minor</option>
+                <option value="Trivial" selected="selected">Trivial</option>
+            </select>
+            <p><input type="text" id="due" name="due" value=""/></p>
+            <a>
+                <button id="encode">Submit</button>
+            </a>
+        </div>
     </div>
 
-    <script src="scripts/script.js"></script>
-</main>
+    <input type="radio" name="tabs" id="tabtwo">
+    <label for="tabtwo">Second Tab</label>
+    <div class="tab">
+        <h1>Second Tab Content</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.</p>
+    </div>
 
+    <input type="radio" name="tabs" id="tabthree">
+    <label for="tabthree">Third Tab</label>
+    <div class="tab">
+        <h1>Third tab content</h1>
+        <p>hfioezhogehzioghz</p>
+    </div>
+
+    <input type="radio" name="tabs" id="tabfour">
+    <label for="tabfour">Third Tab</label>
+    <div class="tab">
+        <h1>Third tab content</h1>
+        <p>hfioezhogehzioghz</p>
+    </div>
+
+
+</div>
+
+<script src="scripts/script.js"></script>
 
 </body>
 

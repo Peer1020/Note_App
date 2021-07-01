@@ -1,308 +1,71 @@
-* {
-    box-sizing: border-box;
-}
-
-
-/* reset ul and li formatting */
-
-ul,
-li {
-    list-style-type: none;
-    list-style-position: inside;
-    margin: 0;
-    padding: 0.1em;
-}
-
-input,
-textarea,
-button {
-    margin: 0;
-}
-
-
-/* Make header sizes more sane */
-
-h1,
-h2,
-h3,
-h4 {
-    margin: 0;
-}
-
-h1 {
-    font-size: large;
-}
-
-h2 {
-    font-size: medium;
-}
-
-h3 {
-    font-size: small;
-}
-
-
-/***** STRUCTURE *****/
-
-body {
-    min-height: 100vh;
-}
-
-
-/* Define Main as flex ROW */
-
-body>main {
-    display: flex;
-    /* Total height minus Header and Footer */
-    height: calc(100vh - 6em);
-    min-height: 400px;
-    position: relative;
-}
-
-/* article gets 1 portion, effectively the rest of the row */
-
-main article {
-    flex: 1;
-}
-
-
-/* Define Nav(s) as flex COLUMN */
-
-nav {
-    display: flex;
-    flex-direction: column;
-}
-
-
-main nav ul:last-child {
-    flex: 1;
-}
-
-main nav ul {
-    overflow-y: auto;
-    overflow-x: hidden;
-    width:250px;
-}
-
-
-/* Define Article as flex COLUMN */
-
-main article {
-    /* flex column */
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* article header gets default height and width */
-
-/* article form gets 1 portion, effectively the rest of the column */
-
-#note-edit-form {
-    /* 1 portions (the rest) */
-    flex: 1;
-}
-
-
-/* Define Edit Form as flex COLUMN */
-
-#note-edit-form {
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* article header gets default height and width */
-
-
-/* article form gets 1 portion, effectively the rest of the column */
-
-#note-edit-form textarea {
-    /* 1 portions (the rest) */
-    flex: 1;
-}
-
-nav li {
-    border-top: 0.1px solid #08111b;
-}
-
-nav ul {
-    margin-bottom: 1em;
-}
-
-nav li {
+.tabs {
     display: flex;
     flex-wrap: wrap;
+    height: 600px;
+    width: 800px;
 }
 
-nav .name,
-nav .title {
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-nav .metadata {
-    width:100%;
+.tabs label {
+    order: 1;
     display: flex;
-    justify-content: space-between;
-}
-
-section {
-    padding: 20px;
-}
-
-/***** STYLE *****/
-
-body>header,
-body>footer {
-    height: 3em;
-    padding: 1em;
-    border: 0.1px solid #929fad;
-}
-
-nav header,
-article header {
-    padding: 5px;
-}
-
-nav header a {
-    color: #FFFFFF;
-}
-
-nav .name,
-nav .title {
-    margin: 5px;
-}
-
-nav .removeBtn {
-    height: 18px;
-    width: 18px;
-    margin: 5px;
-}
-
-nav .metadata {
-    font-size: small;
-    color: #b0b4b7;
-    margin: 5px;
-}
-
-body>main {
-    border: 0.1px solid #929fad;
-}
-
-.removeBtn {
-    padding: 0;
-}
-
-.active {
-    background-color: #4e565d;
-}
-
-/***** THEME *****/
-
-body {
-    background-color: #353d44;
-    color: #d7d9db;
-}
-
-body>header,
-body>footer {
-    background-color: #292f35;
-}
-
-input,
-textarea,
-button {
-    background-color: #4e565d;
-    color: #FFFFFF;
-    border: 1px solid #929fad;
-    border-radius: 4px;
-}
-
-article input,
-article textarea,
-article button {
-    color: #FFFFFF;
-    border: 1px solid #929fad;
-    border-radius: 4px;
-}
-
-a {
-    color: #d7d9db;
-    text-decoration: none;
-}
-
-select {
-    background-color: #4e565d;
-    color: #FFFFFF;
-    display: inline-block;
-}
-
-.dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin-right: 0.2rem;
     cursor: pointer;
+    background-color: whitesmoke;
+    font-weight: bold;
+    transition: background ease 0.3s;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
+.tabs .tab {
+    order: 9;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
     display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    padding: 1rem;
+    background: #fff;
+    padding: 20px;
+    box-shadow: -10px 10px 0px 0px black;
 }
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
+.tabs input[type="radio"] {
+    display: none;
+}
+
+.tabs input[type="radio"]:checked + label {
+    background: #fff;
+}
+
+.tabs input[type="radio"]:checked + label + .tab {
     display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+@media (max-width: 465px) {
+    .tabs .tab,
+    .tabs label {
+        order: initial;
+    }
 
-.show {display: block;}
-
-
-/* Style tab links */
-.tablink {
-    background-color: #555;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 25%;
+    .tabs label {
+        width: 100%;
+        margin-left: 50px;
+    }
 }
 
-.tablink:hover {
-    background-color: #777;
+body {
+    background: darkslategray;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-top: 10vh;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 60rem;
+    margin: 0 auto;
+    font-size: 110%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-    color: white;
-    display: none;
-    padding: 100px 20px;
-    height: 20%;
-}
-
-
