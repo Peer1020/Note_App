@@ -18,20 +18,14 @@ function postFunction() {
 }
 
 
-function openPage(pageName,elmnt,color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-    }
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
+document.getElementById("tabtwo").addEventListener('click', getFunction);
+function getFunction() {
+    var mainContainer=document.getElementById("tabtwo2");
+    let request=  fetch('http://localhost:3000/notes')
+        .then(res => res.json());
+    console.log(request);
+    var request1=JSON.parse(request)
+    var div=document.createElement("div");
+    div.innerHTML='Content '+ request1[0].content;
+    mainContainer.appendChild(div);
 }
-
-
-
-
