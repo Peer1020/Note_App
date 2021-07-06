@@ -13,7 +13,8 @@ exports.create = (req, res) => {
         title: req.body.title || "Untitled Note",
         content: req.body.content,
         importance: req.body.importance,
-        due: req.body.due
+        due: req.body.due,
+        checked: false
     });
 
     // Save Note in the database
@@ -30,7 +31,10 @@ exports.create = (req, res) => {
 
 // Retrieve and return all notes from the database.
 exports.findAll = (req, res) => {
-    Note.find()
+    if (!req.params.sortId){
+        req.params.sortId = "";
+    }
+    Note.find().sort(req.params.sortId)
         .then(notes => {
             res.send(notes);
         }).catch(err => {

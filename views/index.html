@@ -12,10 +12,6 @@
 </head>
 
 <body>
-
-    <button id="edit">edit some</button>
-    
-
 <div class="tabs">
 
 
@@ -25,17 +21,17 @@
         <h1>Create Note</h1>
         <div id='Create_Note' class="tabcontent">
             <label for="title">Title</label>
-            <p><input type="text" id="title" name="title" value="" required="required"></p>
+            <p><input type="text" id="title" name="title" value=""></p>
             <label for="note">Note</label>
-            <p><textarea name="content" id="content" cols="30" rows="10"></textarea></p>
+            <p><textarea name="content" id="content" cols="70" rows="10"></textarea></p>
             <label for="importance">Importance</label>
             <select name="importance" id="importance">
                 <option value="" selected="selected">--Select importance--</option>
-                <option value="Blocker" >Blocker</option>
-                <option value="Critical" >Critical</option>
-                <option value="Major" >Major</option>
-                <option value="Minor">Minor</option>
-                <option value="Trivial" >Trivial</option>
+                <option value="1" >Blocker</option>
+                <option value="2" >Critical</option>
+                <option value="3" >Major</option>
+                <option value="4">Minor</option>
+                <option value="5" >Trivial</option>
             </select>
             <label for="due date">chose due date</label>
             <p><input type="date" id="due" name="due" value=""/></p>
@@ -50,22 +46,39 @@
     <label for="tabtwo">show Notes</label>
     <div class="tab" id="tabtwo2">
     <h1>See all Notes</h1>
-    <div class="sortButton">
-        <button id="byFinish">Sort by finish date</button>
-        <button id="byCreation">sort by creation date</button>
-        <button id="byImportance">Sort by Importance</button>
+    <div class="allSortBtn">
+        <button id="byFinish" onclick="getFunction('-due')">by finish date</button>
+        <button id="byCreation" onclick="getFunction('-createdAt')">by creation date</button>
+        <button id="byImportance">by Importance</button>   
     </div>
-        <div id="notes"></div>
+    <button id="done">show finished</button>
+    <div id="notes"></div>
     </div>
 
-<!-- 
-    <div class="modal">
-        <div class="modalCont">
-            <p class="exit">close modal &times;</p>
-            <p>some content</p>
+
+    <div class="modal" id="modal">
+        <div class="contEdit">
+            <label for="title">Title</label>
+            <p><input type="text" id="titleMod" name="title" value="" required="required"></p>
+            <label for="note">Note</label>
+            <p><textarea name="content" id="contentMod" cols="30" rows="10"></textarea></p>
+            <label for="importance">Importance</label>
+            <select name="importance" id="importanceMod">
+                <option value="" selected="selected">--Select importance--</option>
+                <option value="Blocker" >Blocker</option>
+                <option value="Critical" >Critical</option>
+                <option value="Major" >Major</option>
+                <option value="Minor">Minor</option>
+                <option value="Trivial" >Trivial</option>
+            </select>
+            <label for="due date">chose due date</label>
+            <p><input type="date" id="dueMod" name="due" value=""/></p>
+            <a>
+        <button id="save">Save</button>
+        <button id="exit">Exit</button>
         
         </div>
-    </div>  -->
+    </div> 
 
     <!-- <input type="radio" name="tabs" id="tabtwo">
     <label for="tabtwo">By finish Date</label>
@@ -80,4 +93,8 @@
 
 </div>
 
-<script src="script
+<script src="scripts/script.js"></script>
+
+</body>
+
+</html>
