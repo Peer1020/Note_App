@@ -21,12 +21,51 @@ function postFunction() {
 document.getElementById("tabtwo").addEventListener('click', getFunction);
 function getFunction() {
     var mainContainer = document.getElementById("tabtwo2");
+    // all buttons for sort
+    var btnFinishDate = document.getElementById("byFinish");
+    var btnCreateDate = document.getElementById("byCreation");
+    var btnImportance = document.getElementById("byImportance");
     let request = fetch('http://localhost:3000/notes')
         .then(function (response) {
             return response.json();
         }).then(function (data) {
-            var div = document.createElement("div");
-            div.innerHTML = 'Content ' + data[0].content;
-            mainContainer.appendChild(div);
+
+            for(let i = 0; i < data.length; i++){
+                var div = document.createElement("div");
+                div.setAttribute("id", "note")
+                div.innerHTML += "<p>" + data[i].due_temp +"</p><p class='note-title'>"+data[i].title + "</p><p></p><div><label for='finished'>Finished</label><input type='checkbox' id='check' name='checkbox'></div>" + "<p class='note-content'>" +data[i].content + "</p><button id='edit'>Edit</button><br><br>";
+                document.getElementById("notes").appendChild(div);
+            }
+
+            //div.innerHTML = 'Content ' + data[0].content;
+            
         });
 }
+
+
+// Modal not in use at the moment
+
+document.getElementById("edit").addEventListener('click', openModal);
+function openModal(){
+    let request = fetch('http://localhost:3000/notes')
+    .then(function(response){
+        return response.json();
+
+    }).then(function (data){
+        alert(data)
+
+    })
+    // var closeMod = document.getElementsByClassName("exit");
+    // var modal = document.getElementsByClassName("modal");
+    
+
+
+
+    // closeMod.onclick = function() {
+    //     modal.style.display = "none";
+    // }
+}
+
+
+document.getElementById("check").addEventListener('click', check);
+functi

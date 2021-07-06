@@ -7,7 +7,7 @@ exports.create = (req, res) => {
         return res.status(400).send({
             message: "Note content can not be empty"
         });
-}
+    }
     // Create a Note
     const note = new Note({
         title: req.body.title || "Untitled Note",

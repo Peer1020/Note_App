@@ -2,7 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     height: 600px;
-    width: 800px;
+    width: 900px;
+   
 }
 
 .tabs label {
@@ -18,7 +19,15 @@
     transition: background ease 0.3s;
 }
 
+
+.tab label{
+    padding: 0;
+    justify-content: left;
+    background-color: white;
+}
+
 .tabs .tab {
+    overflow: scroll;
     order: 9;
     flex-grow: 1;
     width: 100%;
@@ -42,10 +51,14 @@
     display: block;
 }
 
-@media (max-width: 465px) {
+@media screen and (max-width: 700px) {
     .tabs .tab,
     .tabs label {
         order: initial;
+    }
+
+    body{
+        background-color: black;
     }
 
     .tabs label {
@@ -55,7 +68,10 @@
 }
 
 body {
-    background: darkslategray;
+    background: #00a2ff;
+    /* display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    text-align: center;  */
     min-height: 100vh;
     box-sizing: border-box;
     padding-top: 10vh;
@@ -68,4 +84,94 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+} 
+
+
+
+
+/* changes */
+
+/* body{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
 }
+
+
+h1{
+    align-items: center;
+} */
+
+
+#encode{
+    width: 300px;
+}
+
+
+
+.tab2{
+    display: grid;
+    grid-template-columns: repeat(4, fr);
+}
+
+#note{
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    border: black solid 4px;
+    padding: 10px;
+    row-gap: 0;
+}
+
+
+.note-title{
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.note-content{
+    overflow: auto;
+    border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+#edit{
+    background-color: white;
+    border: 1px solid black;
+    height: 70px;
+    width: 140px;
+}
+
+
+#edit:hover{
+    background-color: lightblue;
+}
+
+
+nav{
+    display: grid;
+    
+}
+
+
+.sortButton{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px;
+}
+
+
+.modal{
+    display: grid;
+}
+
+
+.modalCont{
+    display: grid;
+
+}
+
