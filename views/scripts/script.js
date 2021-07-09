@@ -15,7 +15,6 @@ function postFunction() {
       content: content_temp,
       importance: importance_temp,
       due: due_temp,
-      checked: true,
     }),
   }).then((response) => {
     console.log(response);
@@ -27,6 +26,9 @@ function updateFunction() {
   var importance_temp = document.getElementById("importanceMod").value;
   var due_temp = document.getElementById("dueMod").value;
   var id_temp = document.getElementById("idMod").value;
+  var finished_temp = document.getElementById("finishedMod").checked;
+  console.log(finished_temp)
+
   let response = fetch("http://localhost:3000/notes/" + id_temp, {
     method: "PUT",
     headers: {
@@ -37,6 +39,7 @@ function updateFunction() {
       content: content_temp,
       importance: importance_temp,
       due: due_temp,
+      finished: finished_temp,
     }),
   }).then((response) => {
     modal.style.display = "none";
@@ -58,25 +61,29 @@ function getFunction(sortBy = "_id") {
     .then(function (data) {
       document.getElementById("notes").innerHTML = "";
       for (let i = 0; i < data.length; i++) {
-        console.log(checked.checked);
-        if (checked.checked === false && data[i].checked === true) {
+        var actDate = new Date(data[i].due)
+        var due_date = actDate.getUTCDate() + "." + actDate.getUTCMonth() + "." + actDate.getUTCFullYear();
+        var finishedDate = new Date(data[i].updatedAt)
+        finishedDate = finishedDate.getUTCDate() + "." + finishedDate.getUTCMonth() + "." + finishedDate.getUTCFullYear();
+        console.log(data[i].finished)
+        if (checked.checked === true && data[i].finished === true) {
           continue;
         }
         var div = document.createElement("div");
         div.setAttribute("id", "note");
         div.innerHTML +=
           "<p>Due:" +
-          data[i].due +
+          due_date +
           "</p><p class='note-title'>" +
           data[i].title +
-          "</p><p></p><div><label for='finished'>Finished</label><input type='checkbox' id='check' name='checkbox'" +
-          (data[i].checked === true ? "checked" : "") +
-          "></div>" +
-          "<p class='note-content'>" +
-          data[i].content +
           "</p><button id='edit' onclick='openModal(\"" +
           data[i]._id +
-          "\")'>Edit</button><br><br>";
+          "\")'>Edit</button><div><label for='finished' id='finished'>Finished</label><p> "+
+          (data[i].finished === true ? finishedDate : "TBD") +
+          "</p></div>" +
+          "<p class='note-content'>" +
+          data[i].content +
+          "</p><br><br>";
         document.getElementById("notes").appendChild(div);
       }
     });
@@ -85,11 +92,10 @@ function getFunction(sortBy = "_id") {
 // Modal not in use at the moment
 
 function openModal(id) {
-  const openMod = document.getElementById("edit");
   const modal = document.getElementById("modal");
   const closeMod = document.getElementById("exit");
   const saveMod = document.getElementById("save");
-  var content_temp = document.getElementById("contentMod");
+
 
   modal.style.display = "block";
 
@@ -105,12 +111,33 @@ function openModal(id) {
       return response.json();
     })
     .then(function (data) {
+      var checkDate = new Date(data.due);
+        var date = checkDate.getFullYear()  + "-" + checkDate.getMonth() + "-" + checkDate.getDate();
+
+        if(checkDate.getDate() < 10 && checkDate.getMonth() < 10){
+          date = checkDate.getFullYear()  + "-0" + checkDate.getMonth() + "-0" + checkDate.getDate();
+       }
+       else if (checkDate.getMonth() < 10){
+            date = checkDate.getFullYear()  + "-0" + checkDate.getMonth() + "-" + checkDate.getDate();
+
+        }
+
+        else if (checkDate.getDate() < 10){
+            date = checkDate.getFullYear()  + "-" + checkDate.getMonth() + "-0" + checkDate.getDate();
+        }
       document.getElementById("idMod").value = data._id;
       document.getElementById("titleMod").value = data.title;
       document.getElementById("contentMod").value = data.content;
       document.getElementById("importanceMod").value = data.importance;
-      document.getElementById("dueMod").value = data.due;
+      document.getElementById("dueMod").value = date;
+      document.getElementById("finishedMod").checked = data.finished;
     });
+}
+document.getElementById("theme").addEventListener('click', switchMode)
+function switchMode() {
+  var site = document.body;
+  site.classList.toggle("darkMode");
+  
 }
 
 // closeMod.addEventListener('click', () => {

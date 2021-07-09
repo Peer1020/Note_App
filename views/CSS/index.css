@@ -50,23 +50,6 @@
 .tabs input[type="radio"]:checked + label + .tab {
     display: block;
 }
-
-@media screen and (max-width: 700px) {
-    .tabs .tab,
-    .tabs label {
-        order: initial;
-    }
-
-    body{
-        background-color: black;
-    }
-
-    .tabs label {
-        width: 100%;
-        margin-left: 50px;
-    }
-}
-
 body {
     background: #00a2ff;
     min-height: 85vh;
@@ -81,8 +64,53 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+}
+
+
+#theme{
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    padding: 1px;
+    width: 280px;
+    box-shadow: 0px 5px 5px 0px black;
+    float: right;
+}
+@media screen and (max-width: 360px) {
+    body{
+        width: 95%;
+    }
+    #theme{
+        display: inline-block;
+        justify-content: center ;
+        padding: 1px;
+        width: 280px;
+        box-shadow: 0px 5px 5px 0px black;
+
+    }
+    .tabs label, .tab, .tab label {
+        width: 100%;
+        margin-left: 50px;
+        text-align: center;
+        display: inline
+    }
+
+    .allSortBtn{
+        display: grid;
+        grid-template-columns: repeat(3, 20%);
+        padding: 0;
+        box-shadow: 0px 5px 5px 0px black;
+    }
+
+
 } 
 
+ 
+
+#done{
+    margin: 20px;
+}
 
 
 
@@ -140,7 +168,26 @@ body {
 #edit:hover{
     background-color: lightblue;
 }
+#finished{
 
+    padding: 0px;
+    /* align-items: center; */
+}
+#finish{
+    background-color: lightskyblue;
+    color: white;
+    border: 0;
+    border-radius: 7px;
+    padding: 10px 30px;
+    height: 50px;
+    width: 90px;
+    /* align-items: center; */
+}
+
+
+#finish:hover{
+    background-color: lightblue;
+}
 
 nav{
     display: grid;
@@ -151,14 +198,13 @@ nav{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
-    border: solid black 1px;
-    box-shadow: 0px 3px 3px 0px black;
+    box-shadow: 0px 5px 5px 0px black;
 
 }
 
 
 
-.modal{
+ .modal{
     position: fixed;
     display:none;
     background-color: rgba(0,0,0,0.4);
@@ -169,21 +215,53 @@ nav{
     height: 600px;
     width: 900px;
     transition: 0.5s ease;
+    
 }
-
 
 
 .contEdit{
     position: relative;
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 5px;
     padding: 10px;
     margin: 50px;
 }
 
 .contEdit label{
+    background-color: whitesmoke;
     padding: 0;
     justify-content: left;
 
 }
 
+input{
+    padding: 4px 6px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.error{
+    border-color: red;
+    background-color: #fff8f5;
+    color: red;
+    content: "pleas fill out this field";
+}
+
+
+.darkMode{
+    background-color: green;
+}
+.darkMode #edit{
+    background-color: green;
+    /* align-items: center; */
+}
+.darkMode .tab {
+    background-color: rgb(123, 123, 211);
+}
+.darkMode .tabs label {
+    background-color: rgb(123, 123, 211);
+}
+
+.darkMode .contEdit{
+    background-color: rgb(123, 123, 211);
+}

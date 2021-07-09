@@ -14,7 +14,7 @@ module.exports = (app) => {
 
   // Update a Note with noteId
   app.put("/notes/:noteId", notes.update);
-  app.put("/notes/checked/:noteId", notes.updateChecked);
+  app.put("/notes/finished/:noteId", notes.updateFinished);
 
   // Delete a Note with noteId
   app.delete("/notes/:noteId", notes.delete);

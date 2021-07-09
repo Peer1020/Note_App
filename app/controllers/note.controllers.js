@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     content: req.body.content,
     importance: req.body.importance,
     due: req.body.due,
-    checked: true,
+    finished: "false",
   });
 
   // Save Note in the database
@@ -71,7 +71,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update a note identified by the noteId in the request
-exports.updateChecked = (req, res) => {
+exports.updateFinished = (req, res) => {
   // Validate Request
   if (!req.body.content) {
     return res.status(400).send({
@@ -80,13 +80,8 @@ exports.updateChecked = (req, res) => {
   }
 
   // Find note and update it with the request body
-  Note.findByIdAndUpdate(req.params.noteId, { new: true })
+  Note.findByIdAndUpdate(req.params.noteId, {checked: req.body.checked}, { new: true })
     .then((note) => {
-      if (!note) {
-        return res.status(404).send({
-          message: "Note not found with id " + req.params.noteId,
-        });
-      }
       res.send(note);
     })
     .catch((err) => {
@@ -115,7 +110,9 @@ exports.update = (req, res) => {
     {
       title: req.body.title || "Untitled Note",
       content: req.body.content,
+      importance: req.body.importance,
       due: req.body.due,
+      finished: req.body.finished,
     },
     { new: true }
   )

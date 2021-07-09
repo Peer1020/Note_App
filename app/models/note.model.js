@@ -5,7 +5,7 @@ const NoteSchema = mongoose.Schema({
     content: String,
     importance: Number,
     due: Date,
-    checked: Boolean
+    finished: Boolean,
 }, {
     timestamps: true
 });
