@@ -49,15 +49,16 @@
     <div class="allSortBtn">
         <button id="byFinish" onclick="getFunction('-due')">by finish date</button>
         <button id="byCreation" onclick="getFunction('-createdAt')">by creation date</button>
-        <button id="byImportance">by Importance</button>   
+        <button id="byImportance" onclick="getFunction('importance')">by Importance</button>   
     </div>
-    <button id="done">show finished</button>
+    <input type="checkbox" id="done" onclick="getFunction()">show finished</input>
     <div id="notes"></div>
     </div>
 
 
     <div class="modal" id="modal">
         <div class="contEdit">
+            <p hidden id="idMod"></p>
             <label for="title">Title</label>
             <p><input type="text" id="titleMod" name="title" value="" required="required"></p>
             <label for="note">Note</label>
@@ -65,11 +66,11 @@
             <label for="importance">Importance</label>
             <select name="importance" id="importanceMod">
                 <option value="" selected="selected">--Select importance--</option>
-                <option value="Blocker" >Blocker</option>
-                <option value="Critical" >Critical</option>
-                <option value="Major" >Major</option>
-                <option value="Minor">Minor</option>
-                <option value="Trivial" >Trivial</option>
+                <option value="1" >Blocker</option>
+                <option value="2" >Critical</option>
+                <option value="3" >Major</option>
+                <option value="4">Minor</option>
+                <option value="5" >Trivial</option>
             </select>
             <label for="due date">chose due date</label>
             <p><input type="date" id="dueMod" name="due" value=""/></p>
