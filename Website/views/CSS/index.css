@@ -50,11 +50,12 @@
 .tabs input[type="radio"]:checked + label + .tab {
     display: block;
 }
+
+
 body {
     background: #00a2ff;
-    min-height: 85vh;
+    min-height: 90vh;
     box-sizing: border-box;
-    padding-top: 10vh;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     line-height: 1.5;
@@ -62,11 +63,9 @@ body {
     margin: 0 auto;
     font-size: 110%;
     display: flex;
-    justify-content: center;
     align-items: center;
 
 }
-
 
 #theme{
     display: flex;
@@ -77,34 +76,6 @@ body {
     box-shadow: 0px 5px 5px 0px black;
     float: right;
 }
-@media screen and (max-width: 360px) {
-    body{
-        width: 95%;
-    }
-    #theme{
-        display: inline-block;
-        justify-content: center ;
-        padding: 1px;
-        width: 280px;
-        box-shadow: 0px 5px 5px 0px black;
-
-    }
-    .tabs label, .tab, .tab label {
-        width: 100%;
-        margin-left: 50px;
-        text-align: center;
-        display: inline
-    }
-
-    .allSortBtn{
-        display: grid;
-        grid-template-columns: repeat(3, 20%);
-        padding: 0;
-        box-shadow: 0px 5px 5px 0px black;
-    }
-
-
-} 
 
  
 
@@ -113,20 +84,10 @@ body {
 }
 
 
-
-/* changes */
-
-
 #encode{
     width: 300px;
 }
 
-
-
-.tab2{
-    display: grid;
-    grid-template-columns: repeat(4, fr);
-}
 
 #note{
     display: grid;
@@ -154,14 +115,13 @@ body {
 
 
 #edit{
-    background-color: lightskyblue;
+    background-color: #00a2ff;
     color: white;
     border: 0;
     border-radius: 7px;
     padding: 10px 30px;
     height: 50px;
     width: 90px;
-    /* align-items: center; */
 }
 
 
@@ -169,30 +129,9 @@ body {
     background-color: lightblue;
 }
 #finished{
-
     padding: 0px;
-    /* align-items: center; */
-}
-#finish{
-    background-color: lightskyblue;
-    color: white;
-    border: 0;
-    border-radius: 7px;
-    padding: 10px 30px;
-    height: 50px;
-    width: 90px;
-    /* align-items: center; */
 }
 
-
-#finish:hover{
-    background-color: lightblue;
-}
-
-nav{
-    display: grid;
-    
-}
 
 .allSortBtn{
     display: grid;
@@ -203,57 +142,11 @@ nav{
 }
 
 
-
- .modal{
-    position: fixed;
-    display:none;
-    background-color: rgba(0,0,0,0.4);
-    -webkit-animation-name: fadeIn;
-    -webkit-animation-duration: 0.4s ;
-    animation-name: fadeIn;
-    animation-duration: 0.4s ;
-    height: 600px;
-    width: 900px;
-    transition: 0.5s ease;
-    
-}
-
-
-.contEdit{
-    position: relative;
-    background-color: whitesmoke;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 50px;
-}
-
-.contEdit label{
-    background-color: whitesmoke;
-    padding: 0;
-    justify-content: left;
-
-}
-
-input{
-    padding: 4px 6px;
-    border: 1px solid black;
-    background-color: white;
-}
-
-.error{
-    border-color: red;
-    background-color: #fff8f5;
-    color: red;
-    content: "pleas fill out this field";
-}
-
-
 .darkMode{
     background-color: green;
 }
 .darkMode #edit{
     background-color: green;
-    /* align-items: center; */
 }
 .darkMode .tab {
     background-color: rgb(123, 123, 211);
@@ -265,3 +158,88 @@ input{
 .darkMode .contEdit{
     background-color: rgb(123, 123, 211);
 }
+
+
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.contEdit{
+    position: relative;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 4em 2em;
+    margin: 50px;
+}
+
+.contEdit label{
+    background-color: whitesmoke;
+    padding: 0;
+    justify-content: left;
+
+}
+
+
+
+@media screen and (max-width: 360px) {
+    #theme{
+        margin-left: 40%;
+        margin-right: 40%;
+        width: 20%;
+
+    }
+    .tabs label, .tab, .tab label{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        font-size: small;
+        padding: 10%;
+
+    }
+
+    textarea, input{
+        width: 70%;
+        height: 40%;
+    }
+
+    .contEdit label, .contEdit p{
+        display: block;
+        text-align: left;
+        width: 50%;
+    }
+
+    #done{
+        width: 4%;
+        height: 4%;
+    }
+
+    .allSortBtn{
+        display: grid;
+        grid-template-columns: repeat(3, 33%);  
+        box-shadow: 0px 5px 5px 0px black;
+        margin-left: 10%;
+        margin-right: 10%;
+     
+    }
+    body{
+        justify-content: center;
+    }
+
+    #note{
+        font-size: small;
+     
+    }
+
+
+
+} 
+

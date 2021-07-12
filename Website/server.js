@@ -32,22 +32,6 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-// define a simple route in JSON for testing
-//app.get('/', (req, res) => {
-//    res.json({"message": "Welcome to Note Application. Take notes quickly. Organize and keep track of all your notes."});
-//});
-
-// define view to html
-//app.get('/',function (req,res){
-//    res.sendFile(path.join(__dirname+'/views/index.html'));
-//})
-
-// set view engine
-
-//app.set('view engine', "raz");
-
-// retrieve main file
-
 app.use(express.static("views"));
 
 
@@ -58,3 +42,5 @@ require('./app/routes/note.routes.js')(app);
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
+
+module.exports = app;

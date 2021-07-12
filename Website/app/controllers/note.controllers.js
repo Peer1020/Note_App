@@ -3,7 +3,7 @@ const Note = require("../models/note.model.js");
 // Create and Save a new Note
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.content) {
+  if (!req.body.content || !req.body.title || !req.body.importance || !req.body.due) {
     return res.status(400).send({
       message: "Note content can not be empty",
     });

@@ -5,6 +5,7 @@ function postFunction() {
   var content_temp = document.getElementById("content").value;
   var importance_temp = document.getElementById("importance").value;
   var due_temp = document.getElementById("due").value;
+
   let response = fetch("http://localhost:3000/notes", {
     method: "POST",
     headers: {
@@ -72,24 +73,23 @@ function getFunction(sortBy = "_id") {
         var div = document.createElement("div");
         div.setAttribute("id", "note");
         div.innerHTML +=
-          "<p>Due:" +
+          "<p>Due: " +
           due_date +
           "</p><p class='note-title'>" +
           data[i].title +
-          "</p><button id='edit' onclick='openModal(\"" +
-          data[i]._id +
-          "\")'>Edit</button><div><label for='finished' id='finished'>Finished</label><p> "+
-          (data[i].finished === true ? finishedDate : "TBD") +
+          "</p><img src='./images/" + data[i].importance + ".png'/><div> "+
+          (data[i].finished === true ? "<label for='finished' id='finished'>Finished</label><p>" +finishedDate : "<strong>TBD</strong>") +
           "</p></div>" +
           "<p class='note-content'>" +
           data[i].content +
-          "</p><br><br>";
+          "</p><button id='edit' onclick='openModal(\"" +
+          data[i]._id +
+          "\")'>Edit</button><br><br>";
         document.getElementById("notes").appendChild(div);
       }
     });
 }
 
-// Modal not in use at the moment
 
 function openModal(id) {
   const modal = document.getElementById("modal");
@@ -139,18 +139,3 @@ function switchMode() {
   site.classList.toggle("darkMode");
   
 }
-
-// closeMod.addEventListener('click', () => {
-//     modal.classList.remove('display');
-// });
-
-// document.getElementById("check").addEventListener('click', check);
-// function check(){
-//     var chbox = document.getElementById("check")
-//     if(chbox.checked == 1){
-//         alert("checked");
-
-//     }else{
-//         alert("no check");
-//     }
-// }
