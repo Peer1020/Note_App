@@ -5,6 +5,7 @@ function postFunction() {
   var content_temp = document.getElementById("content").value;
   var importance_temp = document.getElementById("importance").value;
   var due_temp = document.getElementById("due").value;
+  console.log("1");
 
   let response = fetch("http://localhost:3000/notes", {
     method: "POST",
@@ -19,7 +20,11 @@ function postFunction() {
     }),
   }).then((response) => {
     console.log(response);
+    console.log("2");
+    windows.location.href="localhost:3000"
   });
+  console.log("3");
+  return false;
 }
 function updateFunction() {
   var title_temp = document.getElementById("titleMod").value;
@@ -50,12 +55,14 @@ function updateFunction() {
 
 document.getElementById("tabtwo").addEventListener("click", getFunction);
 function getFunction(sortBy = "_id") {
+  sessionStorage.setItem("sortBy", sortBy);
+  console.log(sessionStorage.getItem("sortBy"));
   var mainContainer = document.getElementById("tabtwo2");
   var checked = document.getElementById("done");
   function isChecked(data) {
     return data._id != true;
   }
-  let request = fetch("http://localhost:3000/notes/sortBy/" + sortBy)
+  let request = fetch("http://localhost:3000/notes/sortBy/" + sessionStorage.getItem("sortBy"))
     .then(function (response) {
       return response.json();
     })
@@ -138,4 +145,8 @@ function switchMode() {
   var site = document.body;
   site.classList.toggle("darkMode");
   
+}
+
+window.onload = function (){
+  getFunction(sessionStorage.getItem("sortBy"));
 }

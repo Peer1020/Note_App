@@ -15,8 +15,26 @@
 <div class="tabs">
 
     <input type="radio" name="tabs" id="tabone" checked="checked">
-    <label for="tabone">Create Note</label>
+    <label for="tabone">Show Notes</label>
     <div class="tab">
+        <h1>See all Notes</h1>
+        <div>
+            <button id="theme">Switch Theme</button>
+        </div><br><br>
+        <div class="allSortBtn">
+            <button id="byFinish" onclick="getFunction('-due')">by finish date</button>
+            <button id="byCreation" onclick="getFunction('-createdAt')">by creation date</button>
+            <button id="byImportance" onclick="getFunction('importance')">by Importance</button>   
+        </div>
+        <input type="checkbox" id="done" onclick="getFunction()">Hide finished</input>
+        <div id="notes"></div>
+        
+    </div>
+
+
+    <input type="radio" name="tabs" id="tabtwo">
+    <label for="tabtwo">Create Note </label>
+    <div class="tab" id="tabtwo2">
         <h1>Create Note</h1>
         <div id='Create_Note' class="tabcontent">
             <form>
@@ -40,23 +58,6 @@
             </a>
             </form>
         </div>
-    </div>
-
-
-    <input type="radio" name="tabs" id="tabtwo">
-    <label for="tabtwo">show Notes</label>
-    <div class="tab" id="tabtwo2">
-    <h1>See all Notes</h1>
-    <div>
-        <button id="theme">Switch Theme</button>
-    </div><br><br>
-    <div class="allSortBtn">
-        <button id="byFinish" onclick="getFunction('-due')">by finish date</button>
-        <button id="byCreation" onclick="getFunction('-createdAt')">by creation date</button>
-        <button id="byImportance" onclick="getFunction('importance')">by Importance</button>   
-    </div>
-    <input type="checkbox" id="done" onclick="getFunction()">Hide finished</input>
-    <div id="notes"></div>
     </div>
 
 
