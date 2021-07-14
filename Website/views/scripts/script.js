@@ -5,7 +5,6 @@ function postFunction() {
   var content_temp = document.getElementById("content").value;
   var importance_temp = document.getElementById("importance").value;
   var due_temp = document.getElementById("due").value;
-  console.log("1");
 
   let response = fetch("http://localhost:3000/notes", {
     method: "POST",
@@ -19,11 +18,8 @@ function postFunction() {
       due: due_temp,
     }),
   }).then((response) => {
-    console.log(response);
-    console.log("2");
     windows.location.href="localhost:3000"
   });
-  console.log("3");
   return false;
 }
 function updateFunction() {
@@ -33,7 +29,6 @@ function updateFunction() {
   var due_temp = document.getElementById("dueMod").value;
   var id_temp = document.getElementById("idMod").value;
   var finished_temp = document.getElementById("finishedMod").checked;
-  console.log(finished_temp)
 
   let response = fetch("http://localhost:3000/notes/" + id_temp, {
     method: "PUT",
@@ -56,12 +51,7 @@ function updateFunction() {
 document.getElementById("tabtwo").addEventListener("click", getFunction);
 function getFunction(sortBy = "_id") {
   sessionStorage.setItem("sortBy", sortBy);
-  console.log(sessionStorage.getItem("sortBy"));
-  var mainContainer = document.getElementById("tabtwo2");
   var checked = document.getElementById("done");
-  function isChecked(data) {
-    return data._id != true;
-  }
   let request = fetch("http://localhost:3000/notes/sortBy/" + sessionStorage.getItem("sortBy"))
     .then(function (response) {
       return response.json();
@@ -73,7 +63,6 @@ function getFunction(sortBy = "_id") {
         var due_date = actDate.getUTCDate() + "." + actDate.getUTCMonth() + "." + actDate.getUTCFullYear();
         var finishedDate = new Date(data[i].updatedAt)
         finishedDate = finishedDate.getUTCDate() + "." + finishedDate.getUTCMonth() + "." + finishedDate.getUTCFullYear();
-        console.log(data[i].finished)
         if (checked.checked === true && data[i].finished === true) {
           continue;
         }
@@ -141,12 +130,30 @@ function openModal(id) {
     });
 }
 document.getElementById("theme").addEventListener('click', switchMode)
-function switchMode() {
+function switchMode(req, isonload=false) {
   var site = document.body;
   site.classList.toggle("darkMode");
-  
+  if(isonload == false){
+    sessionStorage.setItem("colorclass", (sessionStorage.getItem("colorclass") === "darkmode" ? null : "darkmode"));
+  }  
+}
+
+document.getElementById("done").addEventListener('click', checkReload)
+function checkReload(){
+    if(sessionStorage.getItem("done")=='true'){
+      document.getElementById("done").checked = false;
+      sessionStorage.setItem("done", 'false');
+    }
+    else{
+      document.getElementById("done").checked = true;
+      sessionStorage.setItem("done", 'true');
+    }
 }
 
 window.onload = function (){
+  document.getElementById("done").checked = (sessionStorage.getItem("done") === "false" ? false : true);
   getFunction(sessionStorage.getItem("sortBy"));
+  if(sessionStorage.getItem("colorclass") === "darkmode"){
+    switchMode("required", true);
+  }
 }

@@ -143,20 +143,20 @@ body {
 
 
 .darkMode{
-    background-color: green;
+    background-color: #143D59;
 }
 .darkMode #edit{
-    background-color: green;
+    background-color: #143D59;
 }
 .darkMode .tab {
-    background-color: rgb(123, 123, 211);
+    background-color: #F4B41A;
 }
 .darkMode .tabs label {
-    background-color: rgb(123, 123, 211);
+    background-color: #F4B41A;
 }
 
 .darkMode .contEdit{
-    background-color: rgb(123, 123, 211);
+    background-color: #F4B41A;
 }
 
 
@@ -202,7 +202,6 @@ body {
         padding: 10px;
         text-align: center;
         font-size: small;
-        padding: 10%;
 
     }
 
@@ -237,6 +236,10 @@ body {
     #note{
         font-size: small;
      
+    }
+
+    #encode{
+        width: 70%;
     }
 
 
