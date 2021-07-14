@@ -6,6 +6,8 @@ function postFunction() {
   var importance_temp = document.getElementById("importance").value;
   var due_temp = document.getElementById("due").value;
 
+  
+
   let response = fetch("http://localhost:3000/notes", {
     method: "POST",
     headers: {
@@ -29,6 +31,10 @@ function updateFunction() {
   var due_temp = document.getElementById("dueMod").value;
   var id_temp = document.getElementById("idMod").value;
   var finished_temp = document.getElementById("finishedMod").checked;
+
+  if(title_temp.length == 0 || content_temp.length == 0 || importance_temp.length == 0 || due_temp.length == 0){
+    return false;
+  }
 
   let response = fetch("http://localhost:3000/notes/" + id_temp, {
     method: "PUT",

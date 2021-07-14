@@ -39,7 +39,7 @@
         <div id='Create_Note' class="tabcontent">
             <form>
             <label for="title">Title</label>
-            <p><input type="text" id="title" name="title" value="" oninvalid="this.setCustomValidity('Title required')" required></p>
+            <p><input type="text" id="title" name="title" required></p>
             <label for="note">Note</label>
             <p><textarea name="content" id="content" cols="70" rows="10" required></textarea></p>
             <label for="importance">Importance</label>
@@ -52,7 +52,7 @@
                 <option value="5" >Trivial</option>
             </select>
             <label for="due date">Choose due date</label>
-            <p><input type="date" id="due" name="due" value="" required/></p>
+            <p><input type="date" id="due" name="due" required/></p>
             <a>
                 <button id="encode">Submit</button>
             </a>
@@ -63,9 +63,10 @@
 
     <div id="modal">
         <div class="contEdit">
+            <form> 
             <p hidden id="idMod"></p>
             <label for="title">Title</label>
-            <p><input type="text" id="titleMod" name="title" value="" required></p>
+            <p><input type="text" id="titleMod" name="title" required></p>
             <label for="note">Note</label>
             <p><textarea name="content" id="contentMod" cols="20" rows="10" required></textarea></p>
             <label for="importance">Importance</label>
@@ -78,12 +79,13 @@
                 <option value="5" >Trivial</option>
             </select>
             <label for="due date">Choose due date</label>
-            <p><input type="date" id="dueMod" name="due" value="" required/></p>
+            <p><input type="date" id="dueMod" name="due" required/></p>
             <a>
                 <label for="finished">Finished</label>
             <input type='checkbox' id='finishedMod' name='checkbox'><br>
         <button id="save">Save</button>
         <button id="exit">Exit</button>
+        </form>
         
         </div>
     </div> 
