@@ -151,7 +151,11 @@ body {
     background-color: #F4B41A;
 }
 .darkMode .tabs label {
-    background-color: #F4B41A;
+    background-color: #fff;
+}
+
+.darkMode .tabs input[type="radio"]:checked + label {
+    background: #F4B41A;
 }
 
 .darkMode .contEdit{
