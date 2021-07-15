@@ -29,7 +29,7 @@ function postFunction() {
       due: due_temp,
     }),
   }).then((response) => {
-    windows.location.href = "localhost:3000";
+    window.location.href = "localhost:3000";
   });
   return false;
 }
