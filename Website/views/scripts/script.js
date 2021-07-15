@@ -1,8 +1,10 @@
 document
   .getElementById("encode")
-  .addEventListener("click", () => postFunction());
+  .addEventListener("click", (e) => postFunction(e));
 
-function postFunction() {
+function postFunction(e) {
+  e.preventDefault();
+
   var title_temp = document.getElementById("title").value;
   var content_temp = document.getElementById("content").value;
   var importance_temp = document.getElementById("importance").value;
@@ -17,7 +19,7 @@ function postFunction() {
     return false;
   }
 
-  let response = fetch("http://localhost:3000/notes", {
+  let response = fetch("/notes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,10 +31,10 @@ function postFunction() {
       due: due_temp,
     }),
   }).then((response) => {
-    window.location.href = "localhost:3000";
+    window.location.href = "/";
   });
-  return false;
 }
+
 function updateFunction() {
   var title_temp = document.getElementById("titleMod").value;
   var content_temp = document.getElementById("contentMod").value;
