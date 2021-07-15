@@ -3,14 +3,19 @@ const Note = require("../models/note.model.js");
 // Create and Save a new Note
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.content || !req.body.title || !req.body.importance || !req.body.due) {
+  if (
+    !req.body.content ||
+    !req.body.title ||
+    !req.body.importance ||
+    !req.body.due
+  ) {
     return res.status(400).send({
       message: "Note content can not be empty",
     });
   }
   // Create a Note
   const note = new Note({
-    title: req.body.title || "Untitled Note",
+    title: req.body.title,
     content: req.body.content,
     importance: req.body.importance,
     due: req.body.due,
@@ -80,7 +85,11 @@ exports.updateFinished = (req, res) => {
   }
 
   // Find note and update it with the request body
-  Note.findByIdAndUpdate(req.params.noteId, {checked: req.body.checked}, { new: true })
+  Note.findByIdAndUpdate(
+    req.params.noteId,
+    { checked: req.body.checked },
+    { new: true }
+  )
     .then((note) => {
       res.send(note);
     })
@@ -98,7 +107,12 @@ exports.updateFinished = (req, res) => {
 
 exports.update = (req, res) => {
   // Validate Request
-  if (!req.body.content) {
+  if (
+    !req.body.content ||
+    !req.body.title ||
+    !req.body.importance ||
+    !req.body.due
+  ) {
     return res.status(400).send({
       message: "Note content can not be empty",
     });

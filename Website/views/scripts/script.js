@@ -115,7 +115,7 @@ function getFunction(sortBy = "_id") {
           (data[i].finished === true
             ? "<label for='finished' id='finished'>Finished</label><p>" +
               finishedDate
-            : "<strong>TBD</strong>") +
+            : "<strong>Open</strong>") +
           "</p></div>" +
           "<p class='note-content'>" +
           data[i].content +
