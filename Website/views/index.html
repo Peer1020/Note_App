@@ -26,7 +26,7 @@
             <button id="byCreation" onclick="getFunction('-createdAt')">by creation date</button>
             <button id="byImportance" onclick="getFunction('importance')">by Importance</button>   
         </div>
-        <input type="checkbox" id="done" onclick="getFunction()">Hide finished</input>
+        <input type="checkbox" id="done" onclick="getFunction(sessionStorage.getItem('sortBy'))">Hide finished</input>
         <div id="notes"></div>
         
     </div>
