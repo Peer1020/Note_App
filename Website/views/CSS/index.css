@@ -1,0 +1,251 @@
+body {
+    background: #00a2ff;
+    min-height: 90vh;
+    box-sizing: border-box;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 60rem;
+    margin: 0 auto;
+    font-size: 110%;
+    display: flex;
+    align-items: center;
+
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    height: 600px;
+    width: 900px;
+   
+}
+
+.tabs label {
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin-right: 0.2rem;
+    cursor: pointer;
+    background-color: whitesmoke;
+    font-weight: bold;
+    transition: background ease 0.3s;
+}
+
+
+.tab label{
+    padding: 0;
+    justify-content: left;
+    background-color: white;
+}
+
+.tabs .tab {
+    overflow: scroll;
+    order: 9;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    display: none;
+    padding: 1rem;
+    background: #fff;
+    padding: 20px;
+    box-shadow: -10px 10px 0px 0px black;
+}
+
+.tabs input[type="radio"] {
+    display: none;
+}
+
+.tabs input[type="radio"]:checked + label {
+    background: #fff;
+}
+
+.tabs input[type="radio"]:checked + label + .tab {
+    display: block;
+}
+
+#theme{
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    padding: 1px;
+    width: 280px;
+    box-shadow: 0px 5px 5px 0px black;
+    float: right;
+}
+
+ 
+
+#done{
+    margin: 20px;
+}
+
+
+#encode{
+    width: 300px;
+}
+
+
+#note{
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    border: black solid 1px;
+    padding: 10px;
+    row-gap: 0;
+    margin: 20px;
+}
+
+
+.note-title{
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.note-content{
+    overflow: auto;
+    border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+#edit{
+    background-color: #00a2ff;
+    color: white;
+    border: 0;
+    border-radius: 7px;
+    padding: 10px 30px;
+    height: 50px;
+    width: 90px;
+}
+
+
+#edit:hover{
+    background-color: lightblue;
+}
+#finished{
+    padding: 0px;
+}
+
+
+.allSortBtn{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+    box-shadow: 0px 5px 5px 0px black;
+
+}
+
+
+.darkMode{
+    background-color: #143D59;
+}
+.darkMode #edit{
+    background-color: #143D59;
+}
+.darkMode .tab {
+    background-color: #F4B41A;
+}
+.darkMode .tabs label {
+    background-color: #fff;
+}
+
+.darkMode .tabs input[type="radio"]:checked + label {
+    background: #F4B41A;
+}
+
+.darkMode .contEdit{
+    background-color: #F4B41A;
+}
+
+
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.contEdit{
+    position: relative;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 4em 2em;
+    margin: 50px;
+}
+
+.contEdit label{
+    background-color: whitesmoke;
+    padding: 0;
+    justify-content: left;
+
+}
+
+
+
+@media screen and (max-width: 360px) {
+    #theme{
+        margin-left: 40%;
+        margin-right: 40%;
+        width: 20%;
+
+    }
+    .tabs label, .tab, .tab label{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        font-size: small;
+
+    }
+
+    textarea, input{
+        width: 70%;
+        height: 40%;
+    }
+
+    .contEdit label, .contEdit p{
+        display: block;
+        text-align: left;
+        width: 50%;
+    }
+
+    #done{
+        width: 4%;
+        height: 4%;
+    }
+
+    .allSortBtn{
+        display: grid;
+        grid-template-columns: repeat(3, 33%);  
+        box-shadow: 0px 5px 5px 0px black;
+        margin-left: 10%;
+        margin-right: 10%;
+     
+    }
+    body{
+        justify-content: center;
+    }
+
+    #note{
+        font-size: small;
+     
+    }
+
+    #encode{
+        width: 70%;
+    }
+
+
+
+} 
+
